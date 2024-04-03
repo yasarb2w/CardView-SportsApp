@@ -16,6 +16,10 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.SportsViewHolder> {
 
     private List<Sport> sportList;
+    public ItemClickListener clickListener;
+    public void setClickListener(ItemClickListener myListener){
+        this.clickListener=myListener;
+    }
 
     public CustomAdapter(List<Sport> sportList) {
         this.sportList = sportList;
@@ -51,7 +55,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.SportsView
     }
 
 
-    public static class SportsViewHolder extends RecyclerView.ViewHolder{
+    public class SportsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // Holds the references to the views within the item layout
 
         TextView textView;
@@ -63,8 +67,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.SportsView
 
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageviewCard);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (clickListener != null) {
+                clickListener.onClick(view, getAdapterPosition());
+            }
         }
     }
-
-
 }
