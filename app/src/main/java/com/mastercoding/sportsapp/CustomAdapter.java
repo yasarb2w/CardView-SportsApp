@@ -30,6 +30,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.SportsView
     public SportsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflating the layout for each item in the recyclerview
 
+
+
+        // this is the comment
+
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_item_layout,
                         parent,
